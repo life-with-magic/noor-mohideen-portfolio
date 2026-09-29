@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+portfolio/node_modules/
+
+# Production Build Artifacts
+dist/
+portfolio/dist/
+build/
+
+# Environment Variables & Local Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+portfolio/.env*
+!portfolio/.env.example
+
+# Logs & Debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Editor & OS Artifacts
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite & Bundler Caches
+.vite/
+portfolio/.vite/
+.eslintcache
+.stylelintcache
+
+# Temporary & LaTeX Auxiliary Build Artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.xdv
+*-SAVE-ERROR
+*.synctex.gz
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
