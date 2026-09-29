@@ -1,0 +1,282 @@
+profile:
+  fullName: "Noor Mohideen"
+  firstName: "Noor"
+  lastName: "Mohideen"
+  title: "AI Solution Architect"
+  subtitle: "MSc in Artificial Intelligence — University of Edinburgh"
+  kicker: "Noor Mohideen • AI Architect & Researcher"
+  headline: "I architect autonomous AI systems that reason and scale."
+  lede: "Agentic workflows, Model Context Protocol servers, and reasoning pipelines engineered into production-ready software that survives real enterprise scale."
+  location: "Edinburgh, UK • Chennai, India"
+  email: "noormohideen61@gmail.com"
+  phone: "+44 7533971320"
+  github: "life-with-magic"
+  githubUrl: "https://github.com/life-with-magic"
+  linkedin: "noor-mohideen"
+  linkedinUrl: "https://linkedin.com/in/noor-mohideen"
+  pdfPath: "resume.pdf"
+  summary: >
+    AI Solution Architect currently broadening my expertise through an MSc in Artificial Intelligence at the
+    University of Edinburgh, with hands-on experience in AI engineering and designing scalable, production-grade
+    AI systems. Designed 4+ system architectures for AI solutions across B2B and B2C environments. Experienced
+    in leading R&D research initiatives focused on emerging AI technologies, with strong communication and
+    cross-functional coordination skills.
+
+lanes:
+  - id: "agents"
+    label: "AI Workflows"
+    sub: "Agents + MCP + RAG"
+    accent: "#06b6d4"
+    metric: "4+ System Architectures"
+    proof: "Multi-Agent Orchestration"
+  - id: "systems"
+    label: "Enterprise Scale"
+    sub: "200+ Orgs Deployed"
+    accent: "#6366f1"
+    metric: "200+ Active Orgs"
+    proof: "High-Availability BYOLLM"
+  - id: "research"
+    label: "Reasoning & R&D"
+    sub: "Univ of Edinburgh"
+    accent: "#10b981"
+    metric: "MSc AI Candidate"
+    proof: "Dual-Mode Routing Engine"
+
+proof_points:
+  - "4+ Production Architectures"
+  - "200+ Enterprise Orgs Scaled"
+  - "20+ Internal Python Libs Built"
+  - "10+ LLM Providers Integrated"
+
+stack_categories:
+  - id: "agents"
+    name: "AI & Agentic Systems"
+    stat: "Multi-Agent Specialist"
+    headline: "Autonomous intelligence, wired into enterprise workloads."
+    description: "Multi-agent orchestration, custom Model Context Protocol servers, and low-latency reasoning engines."
+    tools:
+      - name: "Model Context Protocol (MCP)"
+        tag: "Enterprise Protocol"
+        exp: "Core Architect"
+        color: "#06b6d4"
+      - name: "Agentic Coding Pipeline"
+        tag: "Autonomous Synthesis"
+        exp: "Production Grade"
+        color: "#8b5cf6"
+      - name: "LLM Orchestration & RAG"
+        tag: "Context Ingestion"
+        exp: "Advanced"
+        color: "#ec4899"
+      - name: "Multi-Agent Systems"
+        tag: "Distributed Tasks"
+        exp: "Expert"
+        color: "#10b981"
+
+  - id: "ml"
+    name: "Machine Learning & Deep Learning"
+    stat: "Databricks Certified"
+    headline: "Factual grounding and specialized model fine-tuning."
+    description: "Deep learning models, natural language processing, benchmark evaluations, and evidence frameworks."
+    tools:
+      - name: "PyTorch & Transformers"
+        tag: "Deep Learning"
+        exp: "Research & Systems"
+        color: "#f97316"
+      - name: "Model Evaluation"
+        tag: "Benchmarking"
+        exp: "Edinburgh Research"
+        color: "#06b6d4"
+      - name: "Natural Language Processing"
+        tag: "Advanced NLP"
+        exp: "MSc Curriculum"
+        color: "#6366f1"
+      - name: "Databricks ML & GenAI"
+        tag: "Certified Engineer"
+        exp: "3x Certified"
+        color: "#ef4444"
+
+  - id: "cloud"
+    name: "Cloud, Infrastructure & Scale"
+    stat: "200+ Orgs Scaled"
+    headline: "Hardened environments that protect data and survive scale."
+    description: "Isolated sandbox execution, multi-cloud architecture, and high-performance microservices."
+    tools:
+      - name: "AWS & Azure Architecture"
+        tag: "Cloud Native"
+        exp: "Enterprise Scale"
+        color: "#f59e0b"
+      - name: "Isolated Sandboxes"
+        tag: "Safe Code Execution"
+        exp: "Production Harness"
+        color: "#10b981"
+      - name: "Docker & Linux"
+        tag: "Containers"
+        exp: "Microservices"
+        color: "#0ea5e9"
+      - name: "Databricks & Snowflake"
+        tag: "Data Warehousing"
+        exp: "MCP Connected"
+        color: "#3b82f6"
+
+  - id: "languages"
+    name: "Core Languages"
+    stat: "High-Performance"
+    headline: "Polyglot engineering for mission-critical systems."
+    description: "Robust systems programming, typed APIs, and modular internal libraries."
+    tools:
+      - name: "Python"
+        tag: "Primary Language"
+        exp: "20+ Libs Authored"
+        color: "#38bdf8"
+      - name: "Rust"
+        tag: "Systems Programming"
+        exp: "High-Concurrency"
+        color: "#f97316"
+      - name: "ReactJS & TypeScript"
+        tag: "Omnichannel UI"
+        exp: "Cross-Platform"
+        color: "#06b6d4"
+      - name: "SQL & REST APIs"
+        tag: "Data Interfaces"
+        exp: "Distributed Queries"
+        color: "#a855f7"
+
+projects:
+  - id: "decision-agent"
+    num: "01"
+    badge: "AI REASONING APPLICATION"
+    accentColor: "#06b6d4"
+    browserUrl: "decision-agent.edinburgh.ai"
+    title: "Decision & Comparison Conversational Agent"
+    tagline: "Dual-Mode Reasoning Engine with Factual Grounding"
+    organization: "University of Edinburgh"
+    location: "Edinburgh, UK"
+    period: "Sep 2026 — Present"
+    tech: ["Python", "LLM Orchestration", "RAG", "Multi-Criteria Decision Analysis", "Evidence Frameworks"]
+    githubUrl: "https://github.com/life-with-magic"
+    about: >
+      Architected a dual-mode conversational reasoning agent capable of navigating complex user decisions.
+      The system proactively queries users to resolve underspecified constraints, supporting both Decision Mode
+      (multi-criteria trade-off evaluation) and Comparison Mode (side-by-side alternative analysis).
+      
+      A core technical breakthrough is the transparent reasoning framework that strictly delineates verifiable
+      facts (source-backed) from operational assumptions and user-defined priorities to deliver auditable,
+      explainable recommendations.
+      
+      Implemented an adaptive dual-speed routing engine that dynamically toggles between a low-latency Faster Mode
+      and a Deep-Thinking Mode equipped with scenario analysis, source freshness validation, and conflict detection.
+
+  - id: "coding-pipeline"
+    num: "02"
+    badge: "AGENTIC SYNTHESIS PIPELINE"
+    accentColor: "#8b5cf6"
+    browserUrl: "agent-pipeline.zeb.ai"
+    title: "Multi-Source Agentic Coding Pipeline"
+    tagline: "Autonomous Context Synthesis into First-Cut Codebases"
+    organization: "Zeb AI"
+    location: "Chennai, India"
+    period: "Feb 2026 — Sep 2026"
+    tech: ["Python", "Agentic AI", "AWS Architecture", "Cloud-Native", "Isolated Sandboxes", "LLM Orchestration"]
+    githubUrl: "https://github.com/life-with-magic"
+    about: >
+      Engineered an autonomous context-aggregation and code-generation pipeline that dynamically ingests disparate
+      inputs across enterprise tools—synthesizing Jira stories, GitHub repositories, OneDrive PRDs, and client email
+      specifications into a unified query context.
+      
+      Engineered autonomous code-generation workflows to synthesize multi-source requirements into high-quality
+      first-cut codebases, enabling rapid human-in-the-loop review and shifting developer focus toward high-level problem-solving.
+      
+      Designed a flexible plug-and-play adapter layer supporting both pre-configured and dynamic, on-the-fly data source
+      onboarding accessible across desktop and mobile clients. Built the underlying orchestration engine with cross-domain
+      extensibility into QA testing, cloud infrastructure, and sales automation.
+
+  - id: "mcp-warehousing"
+    num: "03"
+    badge: "ENTERPRISE MCP FRAMEWORK"
+    accentColor: "#10b981"
+    browserUrl: "mcp-platform.avasoft.com"
+    title: "Multi-Agent Orchestration for Data Warehousing"
+    tagline: "Enterprise MCP Servers Interfacing Snowflake & Databricks"
+    organization: "Avasoft"
+    location: "Chennai, India"
+    period: "Jun 2025 — Jan 2026"
+    tech: ["Python", "Multi-Agent Systems", "Model Context Protocol (MCP)", "BYO-LLM", "Microservices", "REST APIs"]
+    githubUrl: "https://github.com/life-with-magic"
+    about: >
+      Architected a multi-agent orchestration framework utilizing custom Model Context Protocol (MCP) servers to
+      interface autonomous agents with enterprise data warehouses, including Snowflake and Databricks.
+      
+      Engineered a modular ecosystem of 20+ internal Python libraries powering inter-agent workflows, authoring 7 core
+      libraries from scratch and co-developing the shared tool suite.
+      
+      Designed a provider-agnostic 'Bring Your Own LLM' (BYOLLM) abstraction supporting 10+ LLM providers, embedding dynamic
+      analytics dashboards seamlessly into the client’s SaaS platform. Scaled into production serving active users
+      across 200+ distinct enterprise organizations.
+
+experience:
+  - role: "Solution Architect"
+    company: "Zeb AI"
+    parentCompany: "Zeb AI is the parent company of Avasoft."
+    location: "Chennai, India"
+    period: "Feb 2026 — Sep 2026"
+    highlights:
+      - "Architected an extensible execution and test harness for an AI agentic coding system, designing a modular, plug-and-play adapter layer to seamlessly integrate arbitrary input and output data sources."
+      - "Spearheaded the deployment of cross-platform client applications across Web, Desktop (macOS & Windows), and Mobile (iOS & Android), providing an omnichannel interface for real-time instruction and seamless interaction with the AI system."
+
+  - role: "Solution Architect"
+    company: "Avasoft"
+    location: "Chennai, India"
+    period: "Dec 2023 — Jan 2026"
+    highlights:
+      - "Collaborated directly with UK-based SaaS product leaders to define architecture and engineer custom agentic AI workflows tailored for complex enterprise use cases."
+      - "Delivered and deployed the multi-tenant agentic platform into production, reliably scaling to serve active users across 200+ distinct enterprise organizations."
+
+education:
+  - degree: "MSc in Artificial Intelligence"
+    institution: "University of Edinburgh"
+    location: "Edinburgh, UK"
+    period: "Sep 2026 — Present"
+    details:
+      - "Working on projects involving precise decision-making using AI and Machine Learning."
+    courses:
+      - "Accelerated and Advanced NLP"
+      - "Machine Learning Systems"
+      - "Machine Learning Practical"
+      - "Text Technologies for Data Science"
+
+  - degree: "B.E. in Computer Science and Engineering"
+    institution: "St. Joseph's College of Engineering"
+    location: "Chennai, India"
+    period: "Aug 2020 — Mar 2024"
+    details:
+      - "Graduated with Distinction."
+      - "Completed projects in AI and Machine Learning on 'AI-based Analytics for Electric Battery Life Prediction'."
+
+certifications:
+  - title: "Databricks Certified Machine Learning Professional"
+    issuer: "Databricks"
+    date: "Sep 2024"
+  - title: "Databricks Certified Machine Learning Associate"
+    issuer: "Databricks"
+    date: "Aug 2024"
+  - title: "Databricks Certified Generative AI Engineer Associate"
+    issuer: "Databricks"
+    date: "Jul 2024"
+
+interests:
+  - name: "Badminton"
+    description: "Active player focusing on agility, tactical placement, and competitive gameplay."
+  - name: "Chess"
+    description: "Enthusiastic player passionate about strategic planning, opening theory, and rapid games."
+  - name: "Rifle Shooting"
+    description: "Practitioner of precision target shooting, cultivating focus, discipline, and breath control."
+  - name: "Technical Writing"
+    description: "Authoring insights on emerging AI & ML architectures on LinkedIn, alongside in-depth analyses on Medium."
+
+languages:
+  - language: "English"
+    proficiency: "Professional proficiency"
+  - language: "Tamil"
+    proficiency: "Native proficiency"
+  - language: "Hindi"
+    proficiency: "Intermediate proficiency"
