@@ -7,9 +7,13 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const base = process.env.GITHUB_REPOSITORY
-  ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
-  : './';
+const hasCustomDomain =
+  fs.existsSync(path.resolve(__dirname, 'public/CNAME')) ||
+  Boolean(process.env.CUSTOM_DOMAIN);
+
+const base = hasCustomDomain
+  ? '/'
+  : (process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : './');
 
 export default defineConfig({
   plugins: [
