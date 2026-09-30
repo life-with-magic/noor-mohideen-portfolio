@@ -1,17 +1,21 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import YAML from 'yaml';
 import rawYaml from './data/resume.yaml?raw';
 
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
+import HexagonBackground from './components/HexagonBackground/index';
+import Navbar from './components/Navbar/index';
+import Hero from './components/Hero/index';
+import Projects from './components/Projects/index';
 import SkillsExplorer from './components/SkillsExplorer';
 import Experience from './components/Experience';
-import EducationCertifications from './components/EducationCertifications';
+import Education from './components/Education';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 
 export default function App() {
+  const [isDocked, setIsDocked] = useState(false);
+
   const resumeData = useMemo(() => {
     try {
       return YAML.parse(rawYaml) || {};
@@ -35,13 +39,21 @@ export default function App() {
   } = resumeData;
 
   return (
-    <div className="bg-neutral-950 text-slate-100 min-h-screen relative font-sans selection:bg-cyan-500/20 selection:text-cyan-300">
-      {/* Background Subtle Geometric Matrix & Ambient Lights */}
-      <div className="fixed inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.06] pointer-events-none -z-20" />
-      <div className="fixed inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/95 to-neutral-950 pointer-events-none -z-10" />
+    <div className="text-slate-100 min-h-screen relative font-sans selection:bg-white/20 selection:text-white">
+      {/* Only Hexagon Background with Top-Left to Bottom-Right Sweep */}
+      <HexagonBackground
+        className="fixed inset-0 pointer-events-auto -z-10"
+        hexagonSize={75}
+        hexagonMargin={3}
+        onSweepComplete={() => setIsDocked(true)}
+      />
 
-      {/* Naeem Sabir Style Floating Glass Pill Navbar */}
-      <Navbar profile={profile} />
+      {/* Unified Circular-to-Top Navbar */}
+      <Navbar
+        profile={profile}
+        isDocked={isDocked}
+        setIsDocked={setIsDocked}
+      />
 
       {/* Main Content Narrative */}
       <main id="main-content">
@@ -50,33 +62,44 @@ export default function App() {
           profile={profile}
           lanes={lanes}
           proofPoints={proof_points}
+          isDocked={isDocked}
+          setIsDocked={setIsDocked}
         />
 
-        {/* Selected Production AI Systems & Research Case Studies with Expandable Drawers */}
-        <Projects projects={projects} />
+        {/* Subsequent Sections — only visible once navbar moves to top */}
+        <motion.div
+          animate={{
+            opacity: isDocked ? 1 : 0,
+            pointerEvents: isDocked ? 'auto' : 'none'
+          }}
+          transition={{ duration: 0.6, delay: isDocked ? 0.3 : 0 }}
+        >
+          {/* Academic Foundation */}
+          <Education education={education} />
 
-        {/* Capabilities & Interactive Stack Matrix */}
-        <SkillsExplorer stackCategories={stack_categories} />
+          {/* Production Career Experience & Certifications */}
+          <Experience
+            experience={experience}
+            certifications={certifications}
+          />
 
-        {/* Production Career Experience */}
-        <Experience experience={experience} />
+          {/* Selected Production AI Systems & Research Case Studies with Expandable Drawers */}
+          <Projects projects={projects} />
 
-        {/* Academic Foundation & Databricks Certifications */}
-        <EducationCertifications
-          education={education}
-          certifications={certifications}
-        />
+          {/* Capabilities & Interactive Stack Matrix */}
+          <SkillsExplorer stackCategories={stack_categories} />
 
-        {/* Profile Narrative, Disciplines Beyond Code & Languages */}
-        <AboutSection
-          profile={profile}
-          interests={interests}
-          languages={languages}
-        />
+          {/* Profile Narrative, Disciplines Beyond Code & Languages */}
+          <AboutSection
+            profile={profile}
+            interests={interests}
+            languages={languages}
+          />
+
+          {/* Editorial Contact & Provenance Outro */}
+          <ContactSection profile={profile} />
+        </motion.div>
       </main>
-
-      {/* Editorial Contact & Provenance Outro */}
-      <ContactSection profile={profile} />
     </div>
   );
 }

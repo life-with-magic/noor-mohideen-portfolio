@@ -66,6 +66,8 @@ export default function SkillsExplorer({ stackCategories = [] }) {
             </p>
           </div>
 
+
+
           {/* Interactive Search Bar */}
           <div className="relative w-full md:w-80">
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
@@ -97,15 +99,15 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveCategoryId(cat.id)}
-                className={`relative px-4 py-2.5 rounded-2xl text-xs font-mono transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
-                  isActive ? 'text-cyan-300 font-semibold' : 'text-slate-400 hover:text-slate-200'
+                className={`relative px-4 py-2.5 rounded-2xl text-xs font-mono transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
+                  isActive ? 'text-white font-bold' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeStackCategoryPill"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    className="absolute inset-0 rounded-2xl bg-cyan-950/60 border border-cyan-400/30 -z-10 shadow-lg shadow-cyan-950/40"
+                    className="absolute inset-0 rounded-2xl bg-white/10 border border-white/25 -z-10 shadow-lg shadow-white/5"
                   />
                 )}
                 <span>{cat.name}</span>
@@ -136,13 +138,9 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="group relative p-5 rounded-2xl border border-white/5 bg-neutral-900/40 hover:bg-neutral-900/90 hover:border-cyan-500/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                  className="group relative p-5 rounded-2xl border border-white/5 bg-neutral-900/95 hover:bg-neutral-900/90 hover:border-white/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                 >
-                  {/* Subtle top accent gradient */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-1 opacity-60 group-hover:opacity-100 transition-opacity"
-                    style={{ backgroundColor: color }}
-                  />
+
 
                   <div>
                     {/* Header: Category Tag & Experience Badge */}
@@ -153,9 +151,9 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                       <span
                         className="text-[10px] font-mono px-2 py-0.5 rounded-md font-semibold border"
                         style={{
-                          backgroundColor: `${color}15`,
-                          borderColor: `${color}35`,
-                          color: color
+                          backgroundColor: '#a855f715',
+                          borderColor: '#a855f735',
+                          color: '#a855f7'
                         }}
                       >
                         {tool.exp || 'Advanced'}
@@ -163,7 +161,7 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                     </div>
 
                     {/* Tool Name */}
-                    <h3 className="text-base font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-base font-bold text-slate-100 group-hover:text-white transition-colors">
                       {tool.name}
                     </h3>
                   </div>
@@ -171,10 +169,6 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                   {/* Bottom indicator */}
                   <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-500">
                     <span>{tool.categoryName}</span>
-                    <span
-                      className="w-2 h-2 rounded-full group-hover:scale-125 transition-transform"
-                      style={{ backgroundColor: color }}
-                    />
                   </div>
                 </motion.div>
               );
