@@ -16,7 +16,7 @@ import {
   GitBranch
 } from 'lucide-react';
 
-export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
+export default function Hero({ profile = {}, lanes = [], proofPoints = [], isDocked = false }) {
   const [activeLaneId, setActiveLaneId] = useState(lanes[0]?.id || 'agents');
   const [selectedNode, setSelectedNode] = useState('router');
 
@@ -78,13 +78,15 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
   const activeLane = lanes.find(l => l.id === activeLaneId) || lanes[0];
 
   return (
-    <section id="hero" className="min-h-screen pt-28 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col justify-center">
-      {/* Background Subtle Ambience Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/10 via-indigo-500/5 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
-
-      <div className="max-w-7xl mx-auto w-full space-y-12">
+    <section
+      id="hero"
+      className={`min-h-screen px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center justify-center transition-all duration-700 ${
+        isDocked ? 'pt-28 pb-16' : 'pt-0 pb-0 justify-center'
+      }`}
+    >
+      <div className={`max-w-7xl mx-auto w-full transition-all duration-700 ${isDocked ? 'space-y-12' : 'space-y-0'}`}>
         {/* Top Central Portrait & Headline */}
-        <div className="text-center max-w-3xl mx-auto space-y-5">
+        <div className="text-center max-w-3xl mx-auto flex flex-col items-center justify-center">
           {/* Central Portrait — Noor Mohideen (Remains proudly in the center) */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
@@ -92,12 +94,15 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative mx-auto flex flex-col items-center justify-center pb-2 group"
           >
-            {/* Ambient Multi-layer Aura */}
-            <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-cyan-500/25 via-indigo-500/20 to-teal-500/25 blur-xl group-hover:blur-2xl transition-all animate-spin pointer-events-none" style={{ animationDuration: '18s' }} />
-            <div className="absolute -inset-1 rounded-full border border-cyan-400/40 animate-ping opacity-20 pointer-events-none" style={{ animationDuration: '4s' }} />
+            {/* Ambient Backdrop Glow & Shadow for Seamless Alignment with Background */}
+            <div className="absolute -inset-4 rounded-full bg-white/10 blur-2xl pointer-events-none -z-10" />
+            <div className="absolute -inset-2 rounded-full bg-black/80 blur-lg pointer-events-none -z-10" />
 
-            {/* Circular Photo Frame */}
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-cyan-400/80 shadow-[0_0_40px_rgba(6,182,212,0.35)] bg-neutral-900 group-hover:scale-105 transition-transform duration-300">
+            {/* Circular Photo Frame with Ambient Shadow & Soft Edge Blending */}
+            <div
+              id="hero-portrait"
+              className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden bg-neutral-950 ring-1 ring-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95),_0_0_40px_rgba(255,255,255,0.08)] group-hover:scale-105 transition-transform duration-300"
+            >
               <img
                 src={`${import.meta.env.BASE_URL}user.png`}
                 alt="Noor Mohideen"
@@ -106,64 +111,68 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
                   e.currentTarget.src = 'user.png';
                 }}
               />
+              {/* Soft Inner Rim Vignette to seamlessly blend photo edge with dark background */}
+              <div className="absolute inset-0 rounded-full shadow-[inset_0_0_18px_rgba(0,0,0,0.65)] pointer-events-none" />
             </div>
           </motion.div>
 
+          {/* Headline, Kicker, Lede & Action CTAs — Only visible once navbar moves to top */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono"
+            initial={false}
+            animate={
+              isDocked
+                ? { opacity: 1, y: 0, height: 'auto', pointerEvents: 'auto' }
+                : { opacity: 0, y: 25, height: 0, pointerEvents: 'none' }
+            }
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: isDocked ? 0.15 : 0 }}
+            className="space-y-5 overflow-hidden"
           >
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span>{profile.kicker || 'Noor Mohideen • AI Architect & Researcher'}</span>
-          </motion.div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/15 text-slate-200 text-xs font-mono">
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              <span>{profile.kicker || 'Noor Mohideen • AI Architect & Researcher'}</span>
+            </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-100 tracking-tight leading-[1.08] font-sans"
-          >
-            {profile.headline || 'I architect autonomous AI systems that reason and scale.'}
-          </motion.h1>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-slate-100 tracking-tight leading-[1.08] font-sans">
+              {profile.headline || 'I architect autonomous AI systems that reason and scale.'}
+            </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed"
-          >
-            {profile.lede || 'Agentic workflows, Model Context Protocol servers, and reasoning pipelines engineered into production-ready software that survives real enterprise scale.'}
-          </motion.p>
+            <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              {profile.lede || 'Agentic workflows, Model Context Protocol servers, and reasoning pipelines engineered into production-ready software that survives real enterprise scale.'}
+            </p>
 
-          {/* Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap items-center justify-center gap-3 pt-2"
-          >
-            <a
-              href="#systems"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-100 text-neutral-950 font-bold text-xs uppercase tracking-wider hover:bg-white hover:shadow-xl hover:shadow-cyan-500/20 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <span>Explore Systems</span>
-              <ArrowDown className="w-3.5 h-3.5" />
-            </a>
+            {/* Action CTAs */}
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <a
+                href="#systems"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-neutral-950 font-bold text-xs uppercase tracking-wider hover:bg-slate-100 hover:shadow-xl hover:shadow-white/20 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              >
+                <span>Explore Systems</span>
+                <ArrowDown className="w-3.5 h-3.5" />
+              </a>
 
-            <a
-              href={profile.pdfPath || 'resume.pdf'}
-              download="Noor_Mohideen_Resume.pdf"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-slate-700 bg-neutral-950/60 hover:border-slate-500 text-slate-300 hover:text-white text-xs font-mono transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
-            >
-              <span>Download Resume PDF</span>
-              <Download className="w-3.5 h-3.5" />
-            </a>
+              <a
+                href={profile.pdfPath || 'resume.pdf'}
+                download="Noor_Mohideen_Resume.pdf"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-slate-700 bg-neutral-950/60 hover:border-slate-500 text-slate-300 hover:text-white text-xs font-mono transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              >
+                <span>Download Resume PDF</span>
+                <Download className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </motion.div>
         </div>
 
-        {/* Zeb AI / Naeem Sabir Style Interactive Lane Tabs */}
+        {/* Zeb AI / Naeem Sabir Style Interactive Lane Tabs & Architecture Visualizer */}
+        <motion.div
+          initial={false}
+          animate={
+            isDocked
+              ? { opacity: 1, y: 0, height: 'auto', pointerEvents: 'auto' }
+              : { opacity: 0, y: 30, height: 0, pointerEvents: 'none' }
+          }
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: isDocked ? 0.25 : 0 }}
+          className="space-y-12 overflow-hidden"
+        >
         {lanes.length > 0 && (
           <div className="space-y-4">
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3" role="tablist">
@@ -177,7 +186,7 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
                     onClick={() => setActiveLaneId(lane.id)}
                     className={`relative px-4 sm:px-5 py-2.5 rounded-2xl text-left transition-all border ${
                       isActive
-                        ? 'border-cyan-400/40 bg-neutral-900/90 shadow-lg shadow-cyan-950/40'
+                        ? 'border-white/40 bg-neutral-900/90 shadow-lg shadow-white/10'
                         : 'border-white/5 bg-neutral-950/40 hover:bg-neutral-900/50 hover:border-white/10'
                     }`}
                   >
@@ -185,13 +194,13 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
                       <motion.div
                         layoutId="activeHeroLane"
                         transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-indigo-500/5 to-transparent border border-cyan-400/30 -z-10"
+                        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-white/10 via-white/5 to-transparent border border-white/20 -z-10"
                       />
                     )}
                     <div className="flex items-center gap-2">
                       <span
                         className="w-2 h-2 rounded-full"
-                        style={{ backgroundColor: lane.accent || '#06b6d4' }}
+                        style={{ backgroundColor: lane.accent || '#ffffff' }}
                       />
                       <span className="text-xs sm:text-sm font-bold text-slate-100">
                         {lane.label}
@@ -227,7 +236,7 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
               </span>
             </div>
 
-            <div className="flex items-center gap-3 text-xs font-mono text-cyan-400">
+            <div className="flex items-center gap-3 text-xs font-mono text-slate-300">
               <span className="inline-flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span>SYSTEM HEALTHY</span>
@@ -250,9 +259,9 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
                   onClick={() => setSelectedNode(node.id)}
                   className={`text-left p-4 rounded-2xl border transition-all duration-300 relative group flex flex-col justify-between ${
                     isSelected
-                      ? 'border-cyan-400 bg-cyan-950/30 shadow-lg shadow-cyan-950/50 scale-[1.02]'
+                      ? 'border-white/60 bg-white/5 shadow-lg shadow-white/10 scale-[1.02]'
                       : matchesLane
-                      ? 'border-cyan-500/30 bg-neutral-900/80 hover:border-cyan-500/60'
+                      ? 'border-white/25 bg-neutral-900/80 hover:border-white/40'
                       : 'border-white/5 bg-neutral-900/30 hover:border-white/15'
                   }`}
                 >
@@ -275,7 +284,7 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
 
                   {/* Node Title & Sub */}
                   <div>
-                    <h3 className="text-sm font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-sm font-bold text-slate-100 group-hover:text-white transition-colors">
                       {node.label}
                     </h3>
                     <p className="text-[11px] text-slate-400 mt-1 line-clamp-2 leading-relaxed">
@@ -286,7 +295,7 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
                   {/* Metric footer */}
                   <div className="pt-3 mt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono">
                     <span className="text-slate-400">{node.metric}</span>
-                    <ArrowUpRight className="w-3 h-3 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                    <ArrowUpRight className="w-3 h-3 text-slate-500 group-hover:text-white transition-colors" />
                   </div>
                 </button>
               );
@@ -316,10 +325,10 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-semibold text-cyan-400 uppercase">
+                    <span className="text-xs font-mono font-semibold text-white uppercase">
                       INSPECTOR: {activeNode.label}
                     </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/20">
                       {activeNode.metric}
                     </span>
                   </div>
@@ -349,12 +358,13 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
                   key={pIdx}
                   className="flex items-center gap-2 text-xs font-mono text-slate-300 py-1"
                 >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
                   <span className="truncate">{point}</span>
                 </div>
               ))}
             </div>
           )}
+        </motion.div>
         </motion.div>
       </div>
     </section>

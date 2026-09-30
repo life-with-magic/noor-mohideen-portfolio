@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import YAML from 'yaml';
 import rawYaml from './data/resume.yaml?raw';
 
-import RadialIntro from './components/RadialIntro';
 import HexagonBackground from './components/HexagonBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,7 +14,7 @@ import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 
 export default function App() {
-  const [showRadialIntro, setShowRadialIntro] = useState(true);
+  const [isDocked, setIsDocked] = useState(false);
 
   const resumeData = useMemo(() => {
     try {
@@ -39,42 +38,21 @@ export default function App() {
     languages = []
   } = resumeData;
 
-  const handleIntroComplete = (targetHref) => {
-    setShowRadialIntro(false);
-    if (targetHref && targetHref.startsWith('#')) {
-      setTimeout(() => {
-        const el = document.querySelector(targetHref);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 150);
-    }
-  };
-
   return (
-    <div className="bg-neutral-950 text-slate-100 min-h-screen relative font-sans selection:bg-cyan-500/20 selection:text-cyan-300">
-      {/* Hexagon Background (Animate UI Hexagon Background with Denis Klak interactive grid) */}
+    <div className="text-slate-100 min-h-screen relative font-sans selection:bg-white/20 selection:text-white">
+      {/* Only Hexagon Background with Top-Left to Bottom-Right Sweep */}
       <HexagonBackground
-        className="fixed inset-0 pointer-events-auto -z-20 opacity-80"
+        className="fixed inset-0 pointer-events-auto -z-10"
         hexagonSize={75}
         hexagonMargin={3}
+        onSweepComplete={() => setIsDocked(true)}
       />
-      <div className="fixed inset-0 bg-gradient-to-b from-neutral-950/40 via-neutral-950/60 to-neutral-950/90 pointer-events-none -z-10" />
 
-      {/* Radial Intro Screen (Animate UI Community Radial Intro component with user.png & Nav Orbits) */}
-      <AnimatePresence>
-        {showRadialIntro && (
-          <RadialIntro
-            profile={profile}
-            onComplete={handleIntroComplete}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Naeem Sabir Style Floating Glass Pill Navbar */}
+      {/* Unified Circular-to-Top Navbar */}
       <Navbar
         profile={profile}
-        onOpenIntro={() => setShowRadialIntro(true)}
+        isDocked={isDocked}
+        setIsDocked={setIsDocked}
       />
 
       {/* Main Content Narrative */}
@@ -84,33 +62,44 @@ export default function App() {
           profile={profile}
           lanes={lanes}
           proofPoints={proof_points}
+          isDocked={isDocked}
+          setIsDocked={setIsDocked}
         />
 
-        {/* Selected Production AI Systems & Research Case Studies with Expandable Drawers */}
-        <Projects projects={projects} />
+        {/* Subsequent Sections — only visible once navbar moves to top */}
+        <motion.div
+          animate={{
+            opacity: isDocked ? 1 : 0,
+            pointerEvents: isDocked ? 'auto' : 'none'
+          }}
+          transition={{ duration: 0.6, delay: isDocked ? 0.3 : 0 }}
+        >
+          {/* Selected Production AI Systems & Research Case Studies with Expandable Drawers */}
+          <Projects projects={projects} />
 
-        {/* Capabilities & Interactive Stack Matrix */}
-        <SkillsExplorer stackCategories={stack_categories} />
+          {/* Capabilities & Interactive Stack Matrix */}
+          <SkillsExplorer stackCategories={stack_categories} />
 
-        {/* Production Career Experience */}
-        <Experience experience={experience} />
+          {/* Production Career Experience */}
+          <Experience experience={experience} />
 
-        {/* Academic Foundation & Databricks Certifications */}
-        <EducationCertifications
-          education={education}
-          certifications={certifications}
-        />
+          {/* Academic Foundation & Databricks Certifications */}
+          <EducationCertifications
+            education={education}
+            certifications={certifications}
+          />
 
-        {/* Profile Narrative, Disciplines Beyond Code & Languages */}
-        <AboutSection
-          profile={profile}
-          interests={interests}
-          languages={languages}
-        />
+          {/* Profile Narrative, Disciplines Beyond Code & Languages */}
+          <AboutSection
+            profile={profile}
+            interests={interests}
+            languages={languages}
+          />
+
+          {/* Editorial Contact & Provenance Outro */}
+          <ContactSection profile={profile} />
+        </motion.div>
       </main>
-
-      {/* Editorial Contact & Provenance Outro */}
-      <ContactSection profile={profile} />
     </div>
   );
 }

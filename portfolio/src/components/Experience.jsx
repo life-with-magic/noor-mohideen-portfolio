@@ -8,7 +8,7 @@ export default function Experience({ experience = [] }) {
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <div className="pb-6 border-b border-white/10">
-          <div className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
+          <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-300 mb-2">
             <Briefcase className="w-3.5 h-3.5" />
             <span>CAREER TRACK & PRODUCTION SCALE</span>
           </div>
@@ -29,7 +29,7 @@ export default function Experience({ experience = [] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-neutral-950/70 hover:border-cyan-500/30 transition-all duration-300 space-y-6 shadow-xl"
+              className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-neutral-950/70 hover:border-white/20 transition-all duration-300 space-y-6 shadow-xl"
             >
               {/* Header: Role, Company, Location, Period */}
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
@@ -39,7 +39,7 @@ export default function Experience({ experience = [] }) {
                       {exp.role}
                     </h3>
                     <span className="text-slate-400 font-normal">at</span>
-                    <span className="px-3 py-1 rounded-xl bg-cyan-950/60 text-cyan-300 font-semibold font-mono text-sm border border-cyan-500/30">
+                    <span className="px-3 py-1 rounded-xl bg-white/10 text-white font-semibold font-mono text-sm border border-white/20">
                       {exp.company}
                     </span>
                   </div>
@@ -52,8 +52,8 @@ export default function Experience({ experience = [] }) {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900 border border-white/5 text-cyan-300">
-                    <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900 border border-white/5 text-slate-200">
+                    <Calendar className="w-3.5 h-3.5 text-slate-400" />
                     <span>{exp.period || exp.dates}</span>
                   </div>
 
@@ -71,7 +71,7 @@ export default function Experience({ experience = [] }) {
                 <ul className="space-y-3 pt-2">
                   {exp.highlights.map((highlight, hIdx) => (
                     <li key={hIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-white shrink-0 mt-0.5" />
                       <span>{highlight}</span>
                     </li>
                   ))}

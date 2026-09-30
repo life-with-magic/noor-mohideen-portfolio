@@ -31,7 +31,7 @@ export default function AboutSection({ profile = {}, interests = [], languages =
           {/* Left Column: Greeting & Identity Card */}
           <div className="lg:col-span-4 space-y-6">
             <div className="pb-6 border-b border-white/10">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-300 mb-2">
                 <Compass className="w-3.5 h-3.5" />
                 <span>PROFILE & BACKGROUND</span>
               </div>
@@ -43,14 +43,14 @@ export default function AboutSection({ profile = {}, interests = [], languages =
             {/* Profile Summary Card */}
             <div className="rounded-3xl bg-neutral-950/80 border border-white/10 p-6 space-y-5 shadow-2xl">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500/20 via-indigo-500/20 to-teal-500/20 border border-cyan-400/40 flex items-center justify-center font-mono font-bold text-xl text-cyan-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center font-mono font-bold text-xl text-white">
                   NM
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-slate-100">
                     {profile.fullName || 'Noor Mohideen'}
                   </h3>
-                  <p className="text-xs font-mono text-cyan-400">
+                  <p className="text-xs font-mono text-slate-300">
                     {profile.title || 'AI Solution Architect'}
                   </p>
                   <p className="text-[11px] text-slate-400 mt-0.5">
@@ -98,7 +98,7 @@ export default function AboutSection({ profile = {}, interests = [], languages =
             {interests.length > 0 && (
               <div className="space-y-4 pt-6 border-t border-white/5">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-400 font-bold">
-                  <Target className="w-3.5 h-3.5 text-cyan-400" />
+                  <Target className="w-3.5 h-3.5 text-white" />
                   <span>DISCIPLINES & INTERESTS BEYOND CODE</span>
                 </div>
 
@@ -106,10 +106,10 @@ export default function AboutSection({ profile = {}, interests = [], languages =
                   {interests.map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-4 rounded-2xl bg-neutral-950/60 border border-white/5 space-y-1 hover:border-cyan-500/20 transition-colors"
+                      className="p-4 rounded-2xl bg-neutral-950/60 border border-white/5 space-y-1 hover:border-white/20 transition-colors"
                     >
                       <h4 className="text-sm font-bold text-slate-100 flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-white" />
                         <span>{item.name}</span>
                       </h4>
                       <p className="text-xs text-slate-400 leading-relaxed">
@@ -125,7 +125,7 @@ export default function AboutSection({ profile = {}, interests = [], languages =
             {languages.length > 0 && (
               <div className="space-y-3 pt-6 border-t border-white/5">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-400 font-bold">
-                  <Globe className="w-3.5 h-3.5 text-cyan-400" />
+                  <Globe className="w-3.5 h-3.5 text-white" />
                   <span>SPOKEN LANGUAGES</span>
                 </div>
                 <div className="flex flex-wrap gap-2.5">

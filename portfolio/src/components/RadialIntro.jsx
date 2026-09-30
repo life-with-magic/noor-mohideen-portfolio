@@ -8,11 +8,10 @@ import {
   Compass,
   Download,
   ArrowRight,
-  Sparkles,
   ChevronDown
 } from 'lucide-react';
 
-export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profile = {} }) {
+export default function RadialIntro({ onComplete, autoDismissDelay = 3500, profile = {} }) {
   const [isHovered, setIsHovered] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
   const [isMovingToNavbar, setIsMovingToNavbar] = useState(false);
@@ -52,17 +51,17 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
       id: 'stack',
       num: '02',
       label: 'Stack',
-      tagline: 'Technical Capabilities Matrix',
+      tagline: 'Capabilities & MCP Matrix',
       href: '#stack',
       icon: Terminal,
-      color: '#8b5cf6',
-      bgGlow: 'rgba(139,92,246,0.2)'
+      color: '#a855f7',
+      bgGlow: 'rgba(168,85,247,0.2)'
     },
     {
       id: 'experience',
       num: '03',
       label: 'Experience',
-      tagline: 'Zeb AI & Avasoft Deployments',
+      tagline: 'Enterprise AI & Cloud Track Record',
       href: '#experience',
       icon: Briefcase,
       color: '#10b981',
@@ -72,7 +71,7 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
       id: 'education',
       num: '04',
       label: 'Education',
-      tagline: 'MSc AI Univ of Edinburgh',
+      tagline: 'MSc AI (Edinburgh) & Certifications',
       href: '#education',
       icon: GraduationCap,
       color: '#f59e0b',
@@ -107,10 +106,10 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
     if (isMovingToNavbar) return;
     setIsMovingToNavbar(true);
 
-    // After the items fly into the top navbar (550ms), complete and reveal the page
+    // After the circular items smoothly fly into the top navbar (650ms), complete and reveal the page
     setTimeout(() => {
       onComplete?.(targetHref);
-    }, 550);
+    }, 650);
   };
 
   const handleSelect = (item, e) => {
@@ -122,7 +121,7 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
     triggerTransition();
   };
 
-  // Optional auto-dismiss timer (user can cancel by hovering)
+  // Optional auto-dismiss timer (user can cancel or pause by hovering)
   useEffect(() => {
     if (autoDismissDelay <= 0) return;
 
@@ -140,20 +139,15 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: isMovingToNavbar ? 0 : 1 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-950/95 backdrop-blur-2xl overflow-hidden select-none"
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-40 flex items-center justify-center bg-transparent overflow-hidden select-none"
     >
-      {/* Background Radial Glow */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div className="w-[500px] sm:w-[680px] aspect-square rounded-full bg-gradient-to-tr from-cyan-500/10 via-indigo-500/10 to-teal-500/10 blur-3xl opacity-70 animate-pulse" />
-      </div>
-
-      {/* Orbit Rings (Dissolve when moving to navbar) */}
+      {/* Orbit Rings (Dissolve smoothly when moving to navbar) */}
       <motion.div
         animate={{ opacity: isMovingToNavbar ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
         className="absolute inset-0 pointer-events-none flex items-center justify-center"
       >
         <div
@@ -185,7 +179,7 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
           animate={isMovingToNavbar || isHovered ? { rotate: 0 } : { rotate: 360 }}
           transition={
             isMovingToNavbar
-              ? { duration: 0.3 }
+              ? { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
               : { duration: 55, repeat: Infinity, ease: 'linear' }
           }
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -195,13 +189,15 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
             const rad = (angle * Math.PI) / 180;
             const x = Math.cos(rad) * radius;
             const y = Math.sin(rad) * radius;
-            const Icon = item.icon;
             const isItemActive = activeItem?.id === item.id;
 
             // Target position in the top navbar pill:
-            // Centered near the top of the viewport
-            const navbarTargetX = (index - 2.5) * 58;
-            const navbarTargetY = -window.innerHeight * 0.44;
+            // Centered at top of screen (y ≈ -(windowHeight/2 - 38px))
+            const navbarTargetY = typeof window !== 'undefined' ? -(window.innerHeight / 2 - 38) : -300;
+            const targetOffsets = [-190, -95, 0, 95, 185, 280];
+            const navbarTargetX = typeof window !== 'undefined' && window.innerWidth < 640
+              ? 0
+              : targetOffsets[index] || (index - 2.5) * 80;
 
             return (
               <motion.div
@@ -211,10 +207,10 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
                     ? {
                         x: navbarTargetX,
                         y: navbarTargetY,
-                        scale: 0.8,
-                        opacity: 0.2,
+                        scale: 0.85,
+                        opacity: 1,
                         transition: {
-                          duration: 0.52,
+                          duration: 0.65,
                           ease: [0.16, 1, 0.3, 1],
                           delay: index * 0.02
                         }
@@ -233,12 +229,12 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
                   animate={isMovingToNavbar || isHovered ? { rotate: 0 } : { rotate: -360 }}
                   transition={
                     isMovingToNavbar
-                      ? { duration: 0.3 }
+                      ? { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
                       : { duration: 55, repeat: Infinity, ease: 'linear' }
                   }
                 >
                   <motion.button
-                    initial={{ scale: 0, opacity: 0 }}
+                    initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{
                       type: 'spring',
@@ -246,7 +242,7 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
                       damping: 24,
                       delay: 0.15 + index * 0.08
                     }}
-                    whileHover={{ scale: 1.12 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     onMouseEnter={() => setActiveItem(item)}
                     onClick={(e) => handleSelect(item, e)}
@@ -269,24 +265,24 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
                         color: item.color
                       }}
                     >
-                      <Icon className="w-3.5 h-3.5" />
+                      <item.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
 
-                    {/* Item Label & Number */}
+                    {/* Numeric Prefix & Section Title */}
                     <div className="flex flex-col text-left">
-                      <span className="text-[10px] font-mono text-slate-400 leading-none">
-                        .{item.num}
-                      </span>
-                      <span className="text-xs sm:text-sm font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
-                        {item.label}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-[10px] font-mono font-medium text-slate-500 group-hover:text-cyan-400 transition-colors">
+                          .{item.num}
+                        </span>
+                        <span className="text-xs sm:text-sm font-semibold tracking-tight text-slate-100 group-hover:text-white transition-colors">
+                          {item.label}
+                        </span>
+                        <span
+                          className="w-1.5 h-1.5 rounded-full opacity-70 group-hover:opacity-100 group-hover:scale-125 transition-all"
+                          style={{ backgroundColor: item.color }}
+                        />
+                      </div>
                     </div>
-
-                    {/* Status micro-dot */}
-                    <span
-                      className="w-1.5 h-1.5 rounded-full shrink-0"
-                      style={{ backgroundColor: item.color }}
-                    />
                   </motion.button>
                 </motion.div>
               </motion.div>
@@ -294,26 +290,16 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
           })}
         </motion.div>
 
-        {/* Center: User Portrait (Remains proudly in the center!) */}
+        {/* Center: User Portrait (Clean, static, NO spinning) */}
         <motion.div
-          initial={{ scale: 0, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.05 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="relative z-20 flex flex-col items-center text-center cursor-pointer group"
           onClick={handleSkip}
         >
-          {/* Animated Ambient Rings around avatar */}
-          <div
-            className="absolute -inset-3 rounded-full bg-gradient-to-r from-cyan-500/30 via-indigo-500/20 to-teal-500/30 blur-md group-hover:blur-lg transition-all animate-spin"
-            style={{ animationDuration: '14s' }}
-          />
-          <div
-            className="absolute -inset-1 rounded-full border border-cyan-400/50 animate-ping opacity-25"
-            style={{ animationDuration: '3s' }}
-          />
-
           {/* User Image in Circular Frame */}
-          <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-cyan-400/80 shadow-[0_0_40px_rgba(6,182,212,0.35)] bg-neutral-900 group-hover:scale-105 transition-transform duration-300">
+          <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-cyan-400/80 shadow-[0_0_30px_rgba(6,182,212,0.25)] bg-neutral-900 group-hover:scale-105 transition-transform duration-300">
             <img
               src={userImgSrc}
               alt="Noor Mohideen"
@@ -326,9 +312,8 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
 
           {/* Center Identity Info */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            animate={{ opacity: isMovingToNavbar ? 0 : 1 }}
+            transition={{ duration: 0.2 }}
             className="mt-3.5 space-y-0.5"
           >
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-400/30 text-[10px] font-mono text-cyan-300">
@@ -345,7 +330,7 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
       {/* Bottom Hint / Enter Action (Dissolves when moving to navbar) */}
       <motion.div
         animate={{ opacity: isMovingToNavbar ? 0 : 1, y: isMovingToNavbar ? 20 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3"
       >
         <AnimatePresence mode="wait">
@@ -376,7 +361,7 @@ export default function RadialIntro({ onComplete, autoDismissDelay = 3600, profi
         {/* Enter Portfolio Action Button */}
         <button
           onClick={handleSkip}
-          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-100/90 hover:bg-white text-neutral-950 font-bold text-xs font-sans tracking-wide shadow-xl active:scale-95 transition-all"
+          className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-100/90 hover:bg-white text-neutral-950 font-bold text-xs font-sans tracking-wide shadow-xl active:scale-95 transition-all cursor-pointer"
         >
           <span>Enter Portfolio</span>
           <ChevronDown className="w-3.5 h-3.5" />

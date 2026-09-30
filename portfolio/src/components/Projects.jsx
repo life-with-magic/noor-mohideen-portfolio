@@ -30,7 +30,7 @@ export default function Projects({ projects = [] }) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-300 mb-2">
               <Workflow className="w-3.5 h-3.5" />
               <span>PRODUCTION SYSTEMS & RESEARCH</span>
             </div>
@@ -101,7 +101,7 @@ export default function Projects({ projects = [] }) {
                   <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
                     <div className="space-y-1.5 max-w-3xl">
                       <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                        <span className="text-cyan-400 font-semibold">{project.organization}</span>
+                        <span className="text-white font-semibold">{project.organization}</span>
                         <span>•</span>
                         <span>{project.location}</span>
                         <span>•</span>
@@ -131,7 +131,7 @@ export default function Projects({ projects = [] }) {
 
                       <button
                         onClick={() => toggleExpand(project.id)}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-cyan-500/30 bg-cyan-950/30 hover:bg-cyan-900/40 text-cyan-300 text-xs font-mono font-medium transition-all"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs font-mono font-medium transition-all"
                       >
                         <span>{isExpanded ? 'Collapse Architecture' : 'Deep Dive Specs'}</span>
                         <motion.div
@@ -176,7 +176,7 @@ export default function Projects({ projects = [] }) {
                           <div className="lg:col-span-8 space-y-6">
                             {/* MAIN IDEA */}
                             <div className="space-y-2">
-                              <div className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold flex items-center gap-1.5">
+                              <div className="text-xs font-mono uppercase tracking-wider text-white font-bold flex items-center gap-1.5">
                                 <Sparkles className="w-3.5 h-3.5" />
                                 <span>MAIN IDEA & SYSTEM PURPOSE</span>
                               </div>

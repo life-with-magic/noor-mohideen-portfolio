@@ -97,15 +97,15 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveCategoryId(cat.id)}
-                className={`relative px-4 py-2.5 rounded-2xl text-xs font-mono transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
-                  isActive ? 'text-cyan-300 font-semibold' : 'text-slate-400 hover:text-slate-200'
+                className={`relative px-4 py-2.5 rounded-2xl text-xs font-mono transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
+                  isActive ? 'text-white font-bold' : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeStackCategoryPill"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    className="absolute inset-0 rounded-2xl bg-cyan-950/60 border border-cyan-400/30 -z-10 shadow-lg shadow-cyan-950/40"
+                    className="absolute inset-0 rounded-2xl bg-white/10 border border-white/25 -z-10 shadow-lg shadow-white/5"
                   />
                 )}
                 <span>{cat.name}</span>
@@ -136,7 +136,7 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="group relative p-5 rounded-2xl border border-white/5 bg-neutral-900/40 hover:bg-neutral-900/90 hover:border-cyan-500/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                  className="group relative p-5 rounded-2xl border border-white/5 bg-neutral-900/40 hover:bg-neutral-900/90 hover:border-white/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                 >
                   {/* Subtle top accent gradient */}
                   <div
@@ -163,7 +163,7 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                     </div>
 
                     {/* Tool Name */}
-                    <h3 className="text-base font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-base font-bold text-slate-100 group-hover:text-white transition-colors">
                       {tool.name}
                     </h3>
                   </div>
