@@ -1,7 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import YAML from 'yaml';
 import rawYaml from './data/resume.yaml?raw';
 
+import RadialIntro from './components/RadialIntro';
+import HexagonBackground from './components/HexagonBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -12,6 +15,8 @@ import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 
 export default function App() {
+  const [showRadialIntro, setShowRadialIntro] = useState(true);
+
   const resumeData = useMemo(() => {
     try {
       return YAML.parse(rawYaml) || {};
@@ -34,14 +39,43 @@ export default function App() {
     languages = []
   } = resumeData;
 
+  const handleIntroComplete = (targetHref) => {
+    setShowRadialIntro(false);
+    if (targetHref && targetHref.startsWith('#')) {
+      setTimeout(() => {
+        const el = document.querySelector(targetHref);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  };
+
   return (
     <div className="bg-neutral-950 text-slate-100 min-h-screen relative font-sans selection:bg-cyan-500/20 selection:text-cyan-300">
-      {/* Background Subtle Geometric Matrix & Ambient Lights */}
-      <div className="fixed inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.06] pointer-events-none -z-20" />
-      <div className="fixed inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/95 to-neutral-950 pointer-events-none -z-10" />
+      {/* Hexagon Background (Animate UI Hexagon Background with Denis Klak interactive grid) */}
+      <HexagonBackground
+        className="fixed inset-0 pointer-events-auto -z-20 opacity-80"
+        hexagonSize={75}
+        hexagonMargin={3}
+      />
+      <div className="fixed inset-0 bg-gradient-to-b from-neutral-950/40 via-neutral-950/60 to-neutral-950/90 pointer-events-none -z-10" />
+
+      {/* Radial Intro Screen (Animate UI Community Radial Intro component with user.png & Nav Orbits) */}
+      <AnimatePresence>
+        {showRadialIntro && (
+          <RadialIntro
+            profile={profile}
+            onComplete={handleIntroComplete}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Naeem Sabir Style Floating Glass Pill Navbar */}
-      <Navbar profile={profile} />
+      <Navbar
+        profile={profile}
+        onOpenIntro={() => setShowRadialIntro(true)}
+      />
 
       {/* Main Content Narrative */}
       <main id="main-content">

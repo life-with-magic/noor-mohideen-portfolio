@@ -83,12 +83,36 @@ export default function Hero({ profile = {}, lanes = [], proofPoints = [] }) {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/10 via-indigo-500/5 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto w-full space-y-12">
-        {/* Top Kicker Pill & Headline */}
+        {/* Top Central Portrait & Headline */}
         <div className="text-center max-w-3xl mx-auto space-y-5">
+          {/* Central Portrait — Noor Mohideen (Remains proudly in the center) */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="relative mx-auto flex flex-col items-center justify-center pb-2 group"
+          >
+            {/* Ambient Multi-layer Aura */}
+            <div className="absolute -inset-3 rounded-full bg-gradient-to-r from-cyan-500/25 via-indigo-500/20 to-teal-500/25 blur-xl group-hover:blur-2xl transition-all animate-spin pointer-events-none" style={{ animationDuration: '18s' }} />
+            <div className="absolute -inset-1 rounded-full border border-cyan-400/40 animate-ping opacity-20 pointer-events-none" style={{ animationDuration: '4s' }} />
+
+            {/* Circular Photo Frame */}
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-2 border-cyan-400/80 shadow-[0_0_40px_rgba(6,182,212,0.35)] bg-neutral-900 group-hover:scale-105 transition-transform duration-300">
+              <img
+                src={`${import.meta.env.BASE_URL}user.png`}
+                alt="Noor Mohideen"
+                className="w-full h-full object-cover object-top select-none"
+                onError={(e) => {
+                  e.currentTarget.src = 'user.png';
+                }}
+              />
+            </div>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono"
           >
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>

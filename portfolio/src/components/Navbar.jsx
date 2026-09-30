@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, Menu, X, ArrowUpRight, Sparkles, Terminal } from 'lucide-react';
 
-export default function Navbar({ profile }) {
+export default function Navbar({ profile, onOpenIntro }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('systems');
   const [hoveredSection, setHoveredSection] = useState(null);
@@ -47,13 +47,25 @@ export default function Navbar({ profile }) {
             : 'bg-neutral-900/70 border-white/10'
         }`}
       >
-        {/* Monogram / Live Status Badge */}
-        <a
-          href="#hero"
-          className="flex items-center gap-2.5 px-2 py-1 rounded-full text-slate-200 hover:text-white transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+        {/* User Portrait / Live Status Beacon */}
+        <button
+          onClick={onOpenIntro}
+          title="Click to view Radial Orbit Navigation"
+          className="flex items-center gap-2.5 px-2 py-1 rounded-full text-slate-200 hover:text-white transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 text-left"
         >
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 border border-cyan-400/40 flex items-center justify-center font-mono font-bold text-xs text-cyan-300 group-hover:scale-105 transition-transform">
-            NM
+          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-cyan-400/60 shadow-[0_0_12px_rgba(6,182,212,0.4)] group-hover:scale-110 transition-transform bg-neutral-900 shrink-0">
+            <img
+              src={`${import.meta.env.BASE_URL}user.png`}
+              alt="Noor Mohideen"
+              className="w-full h-full object-cover object-top"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+            {/* Fallback initials if image loading */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 flex items-center justify-center font-mono font-bold text-xs text-cyan-300 -z-10">
+              NM
+            </div>
           </div>
           <div className="hidden lg:flex flex-col text-left">
             <span className="text-xs font-bold tracking-tight text-slate-100 flex items-center gap-1.5">
@@ -63,9 +75,12 @@ export default function Navbar({ profile }) {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
             </span>
-            <span className="text-[10px] font-mono text-slate-400">AI Solution Architect</span>
+            <span className="text-[10px] font-mono text-slate-400 flex items-center gap-1">
+              <span>AI Solution Architect</span>
+              <Sparkles className="w-2.5 h-2.5 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </span>
           </div>
-        </a>
+        </button>
 
         {/* Center Pill Links with Sliding Layout Highlight */}
         <div className="hidden md:flex items-center gap-1 p-1 rounded-full bg-neutral-950/40 border border-white/5">
