@@ -40,10 +40,6 @@ export default function ContactSection({ profile = {} }) {
           <h2 className="text-6xl sm:text-7xl lg:text-9xl font-black text-slate-100 tracking-tight font-sans">
             Thanks.
           </h2>
-
-          <p className="text-sm sm:text-base font-mono text-cyan-400 max-w-xl">
-            OPEN TO HIGH-IMPACT AI SOLUTION ARCHITECTURE & RESEARCH ROLES
-          </p>
         </div>
 
         {/* Contact Action Bar */}
@@ -138,10 +134,7 @@ export default function ContactSection({ profile = {} }) {
         {/* Bottom Metadata */}
         <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] font-mono text-slate-600">
           <div>
-            © {new Date().getFullYear()} Noor Mohideen • AI Solution Architect & MSc AI Candidate
-          </div>
-          <div>
-            Driven by static declarative schema (<span className="text-slate-400">src/data/resume.yaml</span>)
+            © {new Date().getFullYear()} Noor Mohideen • All rights reserved.
           </div>
         </div>
       </div>

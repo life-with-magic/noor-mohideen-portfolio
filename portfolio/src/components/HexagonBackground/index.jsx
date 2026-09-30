@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { HexagonGrid } from './HexagonGrid';
 
 export function HexagonBackground({
   className,
@@ -50,12 +51,12 @@ export function HexagonBackground({
     if (rows === 0 || cols === 0) return;
 
     const maxDiagonal = rows + cols;
-    const sweepDuration = 1300; // Fast & crisp 1.3s diagonal sweep
+    const sweepDuration = 2400; // Smooth & elegant 2.4s diagonal sweep
     const stepInterval = sweepDuration / maxDiagonal;
 
     for (let d = 0; d <= maxDiagonal; d++) {
       setTimeout(() => {
-        // Highlight band of hexagons along diagonal d and d-1 for thick light wave
+        // Highlight band of hexagons along diagonal d for light wave
         for (let r = 0; r < rows; r++) {
           const c = d - r;
           if (c >= 0 && c < cols) {
@@ -64,7 +65,7 @@ export function HexagonBackground({
               el.classList.add('hex-sweep');
               setTimeout(() => {
                 el.classList.remove('hex-sweep');
-              }, 420);
+              }, 650);
             }
           }
         }
@@ -151,86 +152,16 @@ export function HexagonBackground({
       )}
       {...props}
     >
-      <style>{`
-        :root { --hexagon-margin: ${hexagonMargin}px; }
-        .hex-cell {
-          clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-          position: relative;
-        }
-        .hex-cell::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: rgba(51, 65, 85, 0.45);
-          opacity: 1;
-          transition: background 1000ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1000ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .hex-cell::after {
-          content: '';
-          position: absolute;
-          inset: var(--hexagon-margin);
-          background-color: #070a0f;
-          clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-          transition: background-color 1000ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        /* Main Page Hover: Low-opacity subtle purple glow */
-        .hex-cell:hover::before,
-        .hex-cell.hex-active::before {
-          background: linear-gradient(135deg, rgba(168, 85, 247, 0.45) 0%, rgba(192, 132, 252, 0.4) 50%, rgba(232, 121, 249, 0.35) 100%);
-          box-shadow: 0 0 16px rgba(168, 85, 247, 0.35), 0 0 30px rgba(147, 51, 234, 0.2);
-          transition-duration: 0ms !important;
-        }
-        .hex-cell:hover::after,
-        .hex-cell.hex-active::after {
-          background-color: #0d0917;
-          transition-duration: 0ms !important;
-        }
-        /* Intro Diagonal Light Sweep: Full Opacity Vibrant Radiant Purple */
-        .hex-cell.hex-sweep::before {
-          background: linear-gradient(135deg, #9333ea 0%, #a855f7 40%, #c084fc 70%, #f472b6 100%) !important;
-          box-shadow: 0 0 25px rgba(168, 85, 247, 0.9), 0 0 50px rgba(147, 51, 234, 0.5) !important;
-          transition-duration: 0ms !important;
-        }
-        .hex-cell.hex-sweep::after {
-          background-color: #1a0e2e !important;
-          transition-duration: 0ms !important;
-        }
-      `}</style>
-      <div className="absolute top-0 -left-0 size-full overflow-hidden pointer-events-auto">
-        {Array.from({ length: gridDimensions.rows }).map((_, rowIndex) => (
-          <div
-            key={`row-${rowIndex}`}
-            style={{
-              marginTop: computedMarginTop,
-              marginLeft:
-                ((rowIndex + 1) % 2 === 0
-                  ? evenRowMarginLeft
-                  : oddRowMarginLeft) - 10,
-            }}
-            className="inline-flex"
-          >
-            {Array.from({ length: gridDimensions.columns }).map(
-              (_, colIndex) => (
-                <div
-                  key={`hexagon-${rowIndex}-${colIndex}`}
-                  id={`hex-${rowIndex}-${colIndex}`}
-                  {...hexagonProps}
-                  style={{
-                    width: hexagonWidth,
-                    height: hexagonHeight,
-                    marginLeft: hexagonMargin,
-                    ...hexagonProps?.style,
-                  }}
-                  className={cn(
-                    'relative hex-cell cursor-pointer',
-                    hexagonProps?.className
-                  )}
-                />
-              )
-            )}
-          </div>
-        ))}
-      </div>
+      <HexagonGrid
+        gridDimensions={gridDimensions}
+        computedMarginTop={computedMarginTop}
+        evenRowMarginLeft={evenRowMarginLeft}
+        oddRowMarginLeft={oddRowMarginLeft}
+        hexagonWidth={hexagonWidth}
+        hexagonHeight={hexagonHeight}
+        hexagonMargin={hexagonMargin}
+        hexagonProps={hexagonProps}
+      />
       {children}
     </div>
   );

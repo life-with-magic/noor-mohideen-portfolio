@@ -4,7 +4,7 @@ profile:
   lastName: "Mohideen"
   title: "AI Solution Architect"
   subtitle: "MSc in Artificial Intelligence — University of Edinburgh"
-  kicker: "Noor Mohideen • AI Architect & Researcher"
+  kicker: "Noor Mohideen S • AI/ML Solution Architect & Engineer"
   headline: "I architect autonomous AI systems that reason and scale."
   lede: "Agentic workflows, Model Context Protocol servers, and reasoning pipelines engineered into production-ready software that survives real enterprise scale."
   location: "Edinburgh, UK • Chennai, India"
@@ -145,7 +145,6 @@ stack_categories:
 projects:
   - id: "decision-agent"
     num: "01"
-    badge: "AI REASONING APPLICATION"
     accentColor: "#06b6d4"
     browserUrl: "decision-agent.edinburgh.ai"
     title: "Decision & Comparison Conversational Agent"
@@ -155,18 +154,17 @@ projects:
     period: "Sep 2026 — Present"
     tech: ["Python", "LLM Orchestration", "RAG", "Multi-Criteria Decision Analysis", "Evidence Frameworks"]
     githubUrl: "https://github.com/life-with-magic"
-    about: >
-      Architected a dual-mode conversational reasoning agent capable of navigating complex user decisions.
-      The system proactively queries users to resolve underspecified constraints, supporting both Decision Mode
-      (multi-criteria trade-off evaluation) and Comparison Mode (side-by-side alternative analysis).
+    about:
+      - "Architected a dual-mode conversational reasoning agent capable of navigating complex user decisions. The system proactively queries users to resolve underspecified constraints, supporting both Decision Mode (multi-criteria trade-off evaluation) and Comparison Mode (side-by-side alternative analysis)."
+      - "A core technical breakthrough is the transparent reasoning framework that strictly delineates verifiable facts (source-backed) from operational assumptions and user-defined priorities to deliver auditable, explainable recommendations."
+      - "Implemented an adaptive dual-speed routing engine that dynamically toggles between a low-latency Faster Mode and a Deep-Thinking Mode equipped with scenario analysis, source freshness validation, and conflict detection."
+    details:
+      - "Architected a dual‑mode conversational agent supporting Decision Mode (multi‑criteria trade‑off evaluation) and Comparison Mode (side‑by‑side alternative analysis), proactively querying users to resolve underspecified constraints."
+      - "Engineered a transparent reasoning framework that strictly delineates verifiable facts (source‑backed), operational assumptions, and user‑defined priorities to deliver auditable, explainable recommendations."
+      - "Implemented an adaptive dual‑speed routing engine that dynamically toggles between a low‑latency Faster Mode and a Deep‑Thinking Mode equipped with scenario analysis, source freshness validation, and conflict detection."
+      - "Implemented an adaptive dual‑speed routing engine, dynamically toggling between a low‑latency Faster Mode and a Deep‑Thinking Mode equipped with scenario analysis, source freshness validation, and conflict detection."
+      - "Designed an evaluation framework to benchmark factual grounding, recommendation consistency, and reasoning transparency, guiding task‑specific fine‑tuning for intent classification and ranking."
       
-      A core technical breakthrough is the transparent reasoning framework that strictly delineates verifiable
-      facts (source-backed) from operational assumptions and user-defined priorities to deliver auditable,
-      explainable recommendations.
-      
-      Implemented an adaptive dual-speed routing engine that dynamically toggles between a low-latency Faster Mode
-      and a Deep-Thinking Mode equipped with scenario analysis, source freshness validation, and conflict detection.
-
   - id: "coding-pipeline"
     num: "02"
     badge: "AGENTIC SYNTHESIS PIPELINE"
@@ -179,17 +177,16 @@ projects:
     period: "Feb 2026 — Sep 2026"
     tech: ["Python", "Agentic AI", "AWS Architecture", "Cloud-Native", "Isolated Sandboxes", "LLM Orchestration"]
     githubUrl: "https://github.com/life-with-magic"
-    about: >
-      Engineered an autonomous context-aggregation and code-generation pipeline that dynamically ingests disparate
-      inputs across enterprise tools—synthesizing Jira stories, GitHub repositories, OneDrive PRDs, and client email
-      specifications into a unified query context.
-      
-      Engineered autonomous code-generation workflows to synthesize multi-source requirements into high-quality
-      first-cut codebases, enabling rapid human-in-the-loop review and shifting developer focus toward high-level problem-solving.
-      
-      Designed a flexible plug-and-play adapter layer supporting both pre-configured and dynamic, on-the-fly data source
-      onboarding accessible across desktop and mobile clients. Built the underlying orchestration engine with cross-domain
-      extensibility into QA testing, cloud infrastructure, and sales automation.
+    about:
+      - "Engineered an autonomous context-aggregation and code-generation pipeline that dynamically ingests disparate inputs across enterprise tools—synthesizing Jira stories, GitHub repositories, OneDrive PRDs, and client email specifications into a unified query context."
+      - "Engineered autonomous code-generation workflows to synthesize multi-source requirements into high-quality first-cut codebases, enabling rapid human-in-the-loop review and shifting developer focus toward high-level problem-solving."
+      - "Designed a flexible plug-and-play adapter layer supporting both pre-configured and dynamic, on-the-fly data source onboarding accessible across desktop and mobile clients. Built the underlying orchestration engine with cross-domain extensibility into QA testing, cloud infrastructure, and sales automation."
+    details:
+      - "Architected an agentic context‑aggregation pipeline that dynamically ingests disparate inputs across enterprise tools—synthesizing Jira stories, GitHub repositories, OneDrive PRDs, and client email specifications into a unified query context."
+      - "Engineered autonomous code‑generation workflows to synthesize multi‑source requirements into high‑quality first‑cut codebases, enabling rapid human‑in‑the‑loop review and shifting developer focus toward high‑level problem‑solving."
+      - "Designed a flexible plug‑and‑play adapter layer supporting both pre‑configured and dynamic, on‑the‑fly data source onboarding accessible across desktop and mobile clients."
+      - "Built the underlying orchestration engine with cross‑domain extensibility, enabling the framework to scale beyond core development into QA testing, cloud infrastructure, and sales automation."
+      - "Technical Skills: Python, Agentic AI, AWS Architecture, Cloud‑Native Development, Isolated Sandbox Environments, LLM Orchestration, RAG, Multi‑Modal Ingestion."
 
   - id: "mcp-warehousing"
     num: "03"
@@ -203,16 +200,17 @@ projects:
     period: "Jun 2025 — Jan 2026"
     tech: ["Python", "Multi-Agent Systems", "Model Context Protocol (MCP)", "BYO-LLM", "Microservices", "REST APIs"]
     githubUrl: "https://github.com/life-with-magic"
-    about: >
-      Architected a multi-agent orchestration framework utilizing custom Model Context Protocol (MCP) servers to
-      interface autonomous agents with enterprise data warehouses, including Snowflake and Databricks.
-      
-      Engineered a modular ecosystem of 20+ internal Python libraries powering inter-agent workflows, authoring 7 core
-      libraries from scratch and co-developing the shared tool suite.
-      
-      Designed a provider-agnostic 'Bring Your Own LLM' (BYOLLM) abstraction supporting 10+ LLM providers, embedding dynamic
-      analytics dashboards seamlessly into the client’s SaaS platform. Scaled into production serving active users
-      across 200+ distinct enterprise organizations.
+    about:
+      - "Architected a multi-agent orchestration framework utilizing custom Model Context Protocol (MCP) servers to interface autonomous agents with enterprise data warehouses, including Snowflake and Databricks."
+      - "Engineered a modular ecosystem of 20+ internal Python libraries powering inter-agent workflows, authoring 7 core libraries from scratch and co-developing the shared tool suite."
+      - "Designed a provider-agnostic 'Bring Your Own LLM' (BYOLLM) abstraction supporting 10+ LLM providers, embedding dynamic analytics dashboards seamlessly into the client’s SaaS platform. Scaled into production serving active users across 200+ distinct enterprise organizations."
+    details:
+      - "Architected a multi-agent orchestration framework utilizing custom Model Context Protocol (MCP) servers to interface autonomous agents with enterprise data warehouses, including Snowflake and Databricks."
+      - "Engineered a modular ecosystem of 20+ internal Python libraries powering inter-agent workflows, authoring 7 core libraries from scratch and co-developing the shared tool suite."
+      - "Designed a provider-agnostic 'Bring Your Own LLM' (BYOLLM) abstraction supporting 10+ LLM providers, embedding dynamic analytics dashboards seamlessly into the client's SaaS platform."
+      - "Partnered with veteran engineering and product leadership to establish a horizontally scalable architecture ensuring enterprise-grade data security and multi-tenant performance."
+      - "Migrated a critical Java-based codebase into Python to achieve seamless microservice integration and unified API compatibility across the multi-agent framework."
+      - "Technical Skills: Python, Multi-Agent Systems, Model Context Protocol (MCP), BYO-LLM Architecture, Microservices, SaaS Integration, REST APIs."
 
 experience:
   - role: "Solution Architect"
@@ -220,6 +218,7 @@ experience:
     parentCompany: "Zeb AI is the parent company of Avasoft."
     location: "Chennai, India"
     period: "Feb 2026 — Sep 2026"
+    logo: "zeb.png"
     highlights:
       - "Architected an extensible execution and test harness for an AI agentic coding system, designing a modular, plug-and-play adapter layer to seamlessly integrate arbitrary input and output data sources."
       - "Spearheaded the deployment of cross-platform client applications across Web, Desktop (macOS & Windows), and Mobile (iOS & Android), providing an omnichannel interface for real-time instruction and seamless interaction with the AI system."
@@ -228,6 +227,7 @@ experience:
     company: "Avasoft"
     location: "Chennai, India"
     period: "Dec 2023 — Jan 2026"
+    logo: "avasoft.png"
     highlights:
       - "Collaborated directly with UK-based SaaS product leaders to define architecture and engineer custom agentic AI workflows tailored for complex enterprise use cases."
       - "Delivered and deployed the multi-tenant agentic platform into production, reliably scaling to serve active users across 200+ distinct enterprise organizations."
@@ -237,6 +237,7 @@ education:
     institution: "University of Edinburgh"
     location: "Edinburgh, UK"
     period: "Sep 2026 — Present"
+    logo: "uoe.png"
     details:
       - "Working on projects involving precise decision-making using AI and Machine Learning."
     courses:
@@ -249,6 +250,7 @@ education:
     institution: "St. Joseph's College of Engineering"
     location: "Chennai, India"
     period: "Aug 2020 — Mar 2024"
+    logo: "stjoseph.png"
     details:
       - "Graduated with Distinction."
       - "Completed projects in AI and Machine Learning on 'AI-based Analytics for Electric Battery Life Prediction'."
@@ -257,12 +259,15 @@ certifications:
   - title: "Databricks Certified Machine Learning Professional"
     issuer: "Databricks"
     date: "Sep 2024"
+    logo: "databricks.png"
   - title: "Databricks Certified Machine Learning Associate"
     issuer: "Databricks"
     date: "Aug 2024"
+    logo: "databricks.png"
   - title: "Databricks Certified Generative AI Engineer Associate"
     issuer: "Databricks"
     date: "Jul 2024"
+    logo: "databricks.png"
 
 interests:
   - name: "Badminton"

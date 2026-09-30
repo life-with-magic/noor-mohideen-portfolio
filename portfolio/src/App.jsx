@@ -3,13 +3,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import YAML from 'yaml';
 import rawYaml from './data/resume.yaml?raw';
 
-import HexagonBackground from './components/HexagonBackground';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
+import HexagonBackground from './components/HexagonBackground/index';
+import Navbar from './components/Navbar/index';
+import Hero from './components/Hero/index';
+import Projects from './components/Projects/index';
 import SkillsExplorer from './components/SkillsExplorer';
 import Experience from './components/Experience';
-import EducationCertifications from './components/EducationCertifications';
+import Education from './components/Education';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 
@@ -74,20 +74,20 @@ export default function App() {
           }}
           transition={{ duration: 0.6, delay: isDocked ? 0.3 : 0 }}
         >
+          {/* Academic Foundation */}
+          <Education education={education} />
+
+          {/* Production Career Experience & Certifications */}
+          <Experience
+            experience={experience}
+            certifications={certifications}
+          />
+
           {/* Selected Production AI Systems & Research Case Studies with Expandable Drawers */}
           <Projects projects={projects} />
 
           {/* Capabilities & Interactive Stack Matrix */}
           <SkillsExplorer stackCategories={stack_categories} />
-
-          {/* Production Career Experience */}
-          <Experience experience={experience} />
-
-          {/* Academic Foundation & Databricks Certifications */}
-          <EducationCertifications
-            education={education}
-            certifications={certifications}
-          />
 
           {/* Profile Narrative, Disciplines Beyond Code & Languages */}
           <AboutSection

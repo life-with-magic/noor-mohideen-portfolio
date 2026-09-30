@@ -66,6 +66,8 @@ export default function SkillsExplorer({ stackCategories = [] }) {
             </p>
           </div>
 
+
+
           {/* Interactive Search Bar */}
           <div className="relative w-full md:w-80">
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
@@ -136,13 +138,9 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="group relative p-5 rounded-2xl border border-white/5 bg-neutral-900/40 hover:bg-neutral-900/90 hover:border-white/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                  className="group relative p-5 rounded-2xl border border-white/5 bg-neutral-900/95 hover:bg-neutral-900/90 hover:border-white/30 transition-all duration-300 flex flex-col justify-between overflow-hidden"
                 >
-                  {/* Subtle top accent gradient */}
-                  <div
-                    className="absolute top-0 left-0 right-0 h-1 opacity-60 group-hover:opacity-100 transition-opacity"
-                    style={{ backgroundColor: color }}
-                  />
+
 
                   <div>
                     {/* Header: Category Tag & Experience Badge */}
@@ -153,9 +151,9 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                       <span
                         className="text-[10px] font-mono px-2 py-0.5 rounded-md font-semibold border"
                         style={{
-                          backgroundColor: `${color}15`,
-                          borderColor: `${color}35`,
-                          color: color
+                          backgroundColor: '#a855f715',
+                          borderColor: '#a855f735',
+                          color: '#a855f7'
                         }}
                       >
                         {tool.exp || 'Advanced'}
@@ -171,10 +169,6 @@ export default function SkillsExplorer({ stackCategories = [] }) {
                   {/* Bottom indicator */}
                   <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-500">
                     <span>{tool.categoryName}</span>
-                    <span
-                      className="w-2 h-2 rounded-full group-hover:scale-125 transition-transform"
-                      style={{ backgroundColor: color }}
-                    />
                   </div>
                 </motion.div>
               );
