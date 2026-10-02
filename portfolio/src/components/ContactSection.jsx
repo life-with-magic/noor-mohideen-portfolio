@@ -76,7 +76,7 @@ export default function ContactSection({ profile = {} }) {
 
           {/* Resume PDF download */}
           <a
-            href="https://github.com/user-attachments/files/32984199/resume.pdf"
+            href="https://github.com/life-with-magic/noor-mohideen-resume/blob/resume/resume.pdf"
             download="Noor_Mohideen_Resume.pdf"
             className="p-5 rounded-2xl bg-neutral-900/60 border border-white/5 hover:border-cyan-500/30 transition-all text-left group flex flex-col justify-between"
           >
