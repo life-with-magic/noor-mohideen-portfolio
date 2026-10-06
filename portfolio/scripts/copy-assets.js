@@ -10,6 +10,7 @@ fs.mkdirSync(publicDir, { recursive: true });
 
 // Look for resume.pdf
 const candidates = [
+  path.resolve(__dirname, '../src/data/resume.pdf'),
   path.resolve(__dirname, '../../resume.pdf'),
   path.resolve('/Users/mohi/Documents/Personal-Projects/noor-mohideen-resume/resume.pdf'),
   path.resolve('/Users/mohi/Documents/Personal-Projects/noor-mohideen-portfolio/resume.pdf')
